@@ -20,18 +20,17 @@ export class NewMomentComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 
   async createHandler(moment: Moment) {
-    const formData = new FormData();
+    const formData = new FormData()
 
-    formData.append("title", moment.title)
-    formData.append("description", moment.description)
+    formData.append('title', moment.title)
+    formData.append('description', moment.description)
 
-    if(moment.image) {
-      formData.append("image", moment.image)
+    if (moment.image) {
+      formData.append('image', moment.image)
     }
 
     // todo
@@ -40,7 +39,7 @@ export class NewMomentComponent implements OnInit {
     await this.momentService.createMoment(formData).subscribe();
 
     // exibir msg
-    this.messagesService.add('Momento adicionado com sucesso!')
+    this.messagesService.add("Momento adicionado com sucesso!");
 
     // redirect
     this.router.navigate(['/']);
